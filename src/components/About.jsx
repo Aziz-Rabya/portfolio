@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/Card';
 import { Code, Palette, Zap, Users } from 'lucide-react';
 import useScrollAnimation, { useIntersectionObserver } from '@/hooks/useScrollAnimation';
 
