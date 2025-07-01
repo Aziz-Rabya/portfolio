@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { useIntersectionObserver } from '@/hooks/useScrollAnimation';
-import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollAnimation, { useIntersectionObserver } from '@/hooks/useScrollAnimation';
+
 import { motion } from 'framer-motion';
 
 const Skills = () => {

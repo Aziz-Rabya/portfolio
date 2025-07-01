@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Code, Palette, Zap, Users } from 'lucide-react';
-import { useIntersectionObserver } from '@/hooks/useScrollAnimation';
-import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollAnimation, { useIntersectionObserver } from '@/hooks/useScrollAnimation';
+
 import { motion } from 'framer-motion';
 
 const About = () => {

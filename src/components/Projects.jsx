@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { FiGithub } from "react-icons/fi";
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink } from 'lucide-react';
-import { useIntersectionObserver } from '@/hooks/useScrollAnimation';
-import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollAnimation, { useIntersectionObserver } from '@/hooks/useScrollAnimation';
+
 import { motion } from 'framer-motion';
 
 const Projects = () => {
@@ -139,5 +139,3 @@ const Projects = () => {
 
 export default Projects;
 
-
-// === Skills.jsx will follow the same pattern, applying scrollDirection & animation once ===
