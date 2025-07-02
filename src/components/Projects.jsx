@@ -5,51 +5,42 @@ import { FiGithub } from "react-icons/fi";
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink } from 'lucide-react';
 import useScrollAnimation, { useIntersectionObserver } from '@/hooks/useScrollAnimation';
-
 import { motion } from 'framer-motion';
 
 const Projects = () => {
   const sectionRef = useRef();
-  const isVisible = useIntersectionObserver(sectionRef, 0.2);
+  const isVisible = useIntersectionObserver(sectionRef, 0.1);
   const scrollDir = useScrollAnimation();
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (isVisible && scrollDir === 'down') setHasAnimated(true);
-  }, [isVisible, scrollDir]);
+    if (isVisible) setHasAnimated(true);
+  }, [isVisible]);
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-featured e-commerce platform built with React and Node.js, featuring user authentication, payment processing, and admin dashboard.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Portfolio Website",
+      description: "A modern, responsive portfolio website showcasing creative work with smooth animations and interactive elements.",
+      image: "src/assets/portfolio.png",
+      tags: ["React", "Framer Motion", "Tailwind CSS", "JavaScript"],
       liveUrl: "#",
-      githubUrl: "https://github.com/your-username/ecommerce-platform"
+      githubUrl: "https://github.com/your-username/portfolio"
+    },
+    {
+      title: "E-commerce Platform",
+      description: "Full-featured online store with product listings, cart functionality, and secure checkout process.",
+      image: "/ecommerce.png",
+      tags: ["Next.js", "Node.js", "MongoDB", "Stripe"],
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
       title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
-      tags: ["React", "Firebase", "Material-UI", "Socket.io"],
+      description: "Productivity application for organizing tasks with drag-and-drop functionality and team collaboration.",
+      image: "/taskapp.png",
+      tags: ["React", "Firebase", "Redux", "Material UI"],
       liveUrl: "#",
-      githubUrl: "https://github.com/your-username/task-app"
-    },
-    {
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard that provides detailed weather information and forecasts for multiple locations worldwide.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=500&h=300&fit=crop",
-      tags: ["Vue.js", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/your-username/weather-dashboard"
-    },
-    {
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website showcasing creative work with smooth animations and interactive elements.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop",
-      tags: ["React", "Framer Motion", "Tailwind CSS", "TypeScript"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/your-username/portfolio"
+      githubUrl: "#"
     }
   ];
 
@@ -58,72 +49,102 @@ const Projects = () => {
       id="projects"
       ref={sectionRef}
       initial="hidden"
-      animate={hasAnimated ? 'visible' : 'hidden'}
+      animate={hasAnimated ? "visible" : "hidden"}
       variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0 }
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
       }}
-      transition={{ duration: 0.6 }}
-      className="min-h-screen py-24 bg-gradient-to-b from-violet-900 to-black px-4 sm:px-10 md:px-16 lg:px-24"
+      transition={{ duration: 0.5 }}
+      className="min-h-[90vh] py-12 md:py-24 bg-gradient-to-b from-violet-900 to-black px-4 sm:px-6 md:px-8 lg:px-24"
     >
       <div className="container mx-auto">
         <motion.div
-          className="text-center mb-20"
-          initial="hidden"
-          animate={hasAnimated ? 'visible' : 'hidden'}
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.5 }}
+          className="text-center mb-12 md:mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 text-white">Featured Projects</h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-white">
+            Featured Projects
+          </h2>
+          <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Some of my recent work building full-stack apps with modern tools and clean designs.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.3
+              }
+            }
+          }}
+        >
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial="hidden"
-              animate={hasAnimated ? 'visible' : 'hidden'}
-              variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -10 }}
             >
-              <Card className="bg-white/10 border border-white/10 backdrop-blur-md rounded-2xl overflow-hidden hover:shadow-2xl transform transition-all duration-700 hover:-translate-y-2">
-                <div className="aspect-video overflow-hidden">
+              <Card className="h-full bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300">
+                <div className="aspect-video overflow-hidden w-full h-48 relative">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110 hover:brightness-110"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                 </div>
                 <CardHeader className="px-6 pt-6">
-                  <CardTitle className="text-2xl font-semibold text-white">{project.title}</CardTitle>
-                  <CardDescription className="text-slate-300 mt-2">
+                  <CardTitle className="text-xl md:text-2xl font-semibold text-white">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-slate-300 mt-2 text-sm md:text-base">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-6 pb-6">
-                  <div className="flex flex-wrap gap-2 my-4">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <Badge
                         key={tagIndex}
-                        variant="secondary"
-                        className="bg-violet-600 text-white text-sm hover:bg-violet-700 px-3 py-1 rounded-full"
+                        className="bg-violet-600/20 text-violet-100 text-xs md:text-sm px-3 py-1 rounded-full border border-violet-500/30 hover:bg-violet-500/50 transition-colors duration-300"
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex gap-3">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white hover:scale-105">
-                        <ExternalLink className="h-4 w-4 mr-2" />Live Demo
+                      <Button 
+                        size="sm" 
+                        className="bg-green-600 hover:bg-green-700 text-white transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Live Demo
                       </Button>
                     </a>
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="sm" className="bg-gray-800 hover:bg-gray-900 text-white hover:scale-105">
-                        <FiGithub className="h-4 w-4 mr-2" />Code
+                      <Button 
+                        size="sm" 
+                        className="bg-gray-800 hover:bg-gray-700 text-white transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FiGithub className="h-4 w-4 mr-2" />
+                        Code
                       </Button>
                     </a>
                   </div>
@@ -131,11 +152,10 @@ const Projects = () => {
               </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );
 };
 
 export default Projects;
-
