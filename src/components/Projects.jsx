@@ -23,24 +23,24 @@ const Projects = () => {
       description: "A modern, responsive portfolio website showcasing creative work with smooth animations and interactive elements.",
       image: "/portfolio.png",
       tags: ["React", "Framer Motion", "Tailwind CSS", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/your-username/portfolio"
+      liveUrl: "https://portfolio-sepia-pi-ovjth9zmma.vercel.app/",
+      githubUrl: "https://github.com/Aziz-Rabya/portfolio"
     },
     {
-      title: "E-commerce Platform",
+      title: "Gaming-Website",
       description: "Full-featured online store with product listings, cart functionality, and secure checkout process.",
       image: "/ecommerce.png",
-      tags: ["Next.js", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "#",
-      githubUrl: "#"
+      tags: ["Tailwindcss", "react", "Stripe"],
+      liveUrl: "https://gaming-website-riham5v2f-azizs-projects-19d6e2bc.vercel.app/",
+      githubUrl: "https://github.com/Aziz-Rabya/Gaming_Website"
     },
     {
-      title: "Task Management App",
+      title: "Real-Estate",
       description: "Productivity application for organizing tasks with drag-and-drop functionality and team collaboration.",
       image: "/taskapp.png",
       tags: ["React", "Firebase", "Redux", "Material UI"],
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://real-estate-bqu9ob9wd-azizs-projects-19d6e2bc.vercel.app/",
+      githubUrl: "https://github.com/Aziz-Rabya/real-estate"
     }
   ];
 
